@@ -1,17 +1,13 @@
 require "sinatra/base"
 require "glorify/version"
-require "redcarpet"
-require "albino"
-require "nokogiri"
-require "net/http"
+require "glorify/renderer"
 
 module Sinatra
   module Glorify
     module Helpers
       def glorify text
-       options = [:filter_html, :autolink,
-          :no_intraemphasis, :fenced_code, :gh_blockcode]
-        highlighter(Redcarpet.new(text, *options).to_html)
+        rndr = Glorify::Renderer.new(:use_albino => settings.use_albino)
+        Redcarpet::Markdown.new(rndr, settings.glorify_extensions).render(text)
       end
 
       def glorify_css
@@ -78,42 +74,15 @@ module Sinatra
           .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
         css
       end
-
-      private
-      def highlighter html
-        doc = Nokogiri::HTML(html)
-        doc.search("//pre[@lang]").each do |pre|
-          pre.replace colorize(pre.text.rstrip, pre[:lang])
-        end
-        doc.search('pre').each do |pre|
-          pre.children.each do |c|
-            c.parent = pre.parent
-          end
-          pre.remove
-        end
-        doc.search('div').each do |div|
-          if div['class'] == 'highlight'
-           div.replace(Nokogiri.make("<pre>#{div.to_html}</pre>"))
-          end
-        end
-        doc.to_s
-      end
-
-      def colorize(code, lang)
-        if(pygmentize?)
-          Albino.colorize(code, lang)
-        else
-          Net::HTTP.post_form(URI.parse('http://pygments.appspot.com/'),
-                              {'code'=>code, 'lang'=>lang}).body
-        end
-      end
-
-      def pygmentize?
-        system 'pygmentize -V'
-      end
     end
 
     def self.registered(app)
+      app.set :use_albino, proc { system 'pygmentize -V' }
+      app.set :glorify_extensions, { :filter_html => true,
+                                     :autolink => true,
+                                     :no_intra_emphasis => true,
+                                     :fenced_code_blocks => true
+                                    }
       app.helpers Glorify::Helpers
       app.get '/pygments.css' do
         glorify_css
