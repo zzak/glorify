@@ -10,10 +10,10 @@ module Sinatra
     module Helpers
       def glorify text
        options = [:filter_html, :autolink,
-          :no_intraemphasis, :fenced_code, :gh_blockcode]  
+          :no_intraemphasis, :fenced_code, :gh_blockcode]
         highlighter(Redcarpet.new(text, *options).to_html)
-      end 
- 
+      end
+
       def glorify_css
         <<-css
           .hll { background-color: #ffffcc }
@@ -81,22 +81,22 @@ module Sinatra
 
       private
       def highlighter html
-        doc = Nokogiri::HTML(html) 
-        doc.search("//pre[@lang]").each do |pre|  
+        doc = Nokogiri::HTML(html)
+        doc.search("//pre[@lang]").each do |pre|
           pre.replace colorize(pre.text.rstrip, pre[:lang])
-        end 
+        end
         doc.search('pre').each do |pre|
           pre.children.each do |c|
             c.parent = pre.parent
           end
-          pre.remove 
-        end 
+          pre.remove
+        end
         doc.search('div').each do |div|
           if div['class'] == 'highlight'
            div.replace(Nokogiri.make("<pre>#{div.to_html}</pre>"))
           end
-        end 
-        doc.to_s 
+        end
+        doc.to_s
       end
 
       def colorize(code, lang)
@@ -112,7 +112,7 @@ module Sinatra
         system 'pygmentize -V'
       end
     end
- 
+
     def self.registered(app)
       app.helpers Glorify::Helpers
       app.get '/pygments.css' do
