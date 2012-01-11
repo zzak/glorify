@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency "sinatra"
-  s.add_runtime_dependency "redcarpet", "~> 1.0"
+  s.add_runtime_dependency "redcarpet", "~> 2.0"
   s.add_runtime_dependency "albino"
   s.add_runtime_dependency "nokogiri"
 end
