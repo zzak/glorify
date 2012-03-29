@@ -16,7 +16,7 @@ module Sinatra
         if use_albino
           Albino.colorize(code, lang)
         else
-          Net::HTTP.post_form(URI.parse('http://pygments.appspot.com/'),
+          Net::HTTP.post_form(URI.parse('http://pygments-main.appspot.com/'),
                               {'code'=>code, 'lang'=>lang}).body
         end
       end
