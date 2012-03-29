@@ -5,7 +5,7 @@ require "glorify/version"
 Gem::Specification.new do |s|
   s.name        = "glorify"
   s.version     = Sinatra::Glorify::VERSION
-  s.authors     = ["Zachary Scott"]
+  s.authors     = ["Zachary Scott", "Jonathan Stott"]
   s.email       = ["zachary@zacharyscott.net"]
   s.homepage    = "http://github.com/zzak/glorify"
   s.summary     = %q{Sinatra helper to parse markdown with syntax highlighting like the pros}
