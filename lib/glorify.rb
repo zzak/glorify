@@ -6,7 +6,7 @@ module Sinatra
   module Glorify
     module Helpers
       def glorify text
-        rndr = Glorify::Renderer.new(:use_albino => settings.use_albino)
+        rndr = Glorify::Renderer.new
         Redcarpet::Markdown.new(rndr, settings.glorify_extensions).render(text)
       end
 
@@ -77,7 +77,6 @@ module Sinatra
     end
 
     def self.registered(app)
-      app.set :use_albino, proc { system 'pygmentize -V' }
       app.set :glorify_extensions, { :filter_html => true,
                                      :autolink => true,
                                      :no_intra_emphasis => true,
