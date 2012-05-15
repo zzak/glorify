@@ -1,25 +1,24 @@
 require "redcarpet"
-require "albino"
-require "net/http"
+require "pygments.rb"
 
 module Sinatra
   module Glorify
     class Renderer < Redcarpet::Render::HTML
-      attr_reader :use_albino
 
       def initialize(options={})
-        @use_albino = options.fetch(:use_albino, true)
+        python = ENV['GLORIFY_PYTHON'] || 'python'
+        RubyPython.configure :python_exe => python
         super
       end
 
       def block_code(code, lang)
-        if use_albino
-          Albino.colorize(code, lang)
-        else
-          Net::HTTP.post_form(URI.parse('http://pygments.appspot.com/'),
-                              {'code'=>code, 'lang'=>lang}).body
+        begin
+          Pygments.highlight(code, :lexer => lang, :options => {:encoding => "utf-8"})
+        rescue RubyPython::PythonError
+          Pygments.highlight(code, :options => {:encoding => "utf-8"})
         end
       end
+
     end
   end
 end
