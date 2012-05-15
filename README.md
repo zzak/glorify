@@ -85,6 +85,17 @@ this is just a simple `erb` template, but you get the idea.
 </html>
 ```
 
+### on heroku
+
+to make this work on heroku you'll have to use python2.6
+
+```bash
+heroku config:add GLORIFY_PYTHON=python2.6
+```
+thanks to @simon for 
+[pointing this out](https://github.com/zzak/glorify/pull/5#r812124)
+
+
 ## license
 
 ```
