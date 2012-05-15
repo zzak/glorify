@@ -1,3 +1,5 @@
 .rvmrc
 pkg/*
 *.swp
+.rbx
+Gemfile.lock

@@ -2,7 +2,7 @@
 
 Sinatra helper to parse markdown with syntax highlighting like the pros
 
-Renders via redcarpet with syntax highlighting thanks to albino. Able to use
+Renders via redcarpet with syntax highlighting thanks to [pygments.rb](https://github.com/tmm1/pygments.rb). Able to use
 fenced code blocks like github, and includes a default pygments stylesheet.
 
 ## install
