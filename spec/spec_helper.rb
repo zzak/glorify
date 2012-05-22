@@ -26,4 +26,8 @@ class MiniTest::Spec
   def body
     last_response.body.gsub(/\n/,'')
   end
+
+  def ok?
+    last_response.ok?
+  end
 end

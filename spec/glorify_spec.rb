@@ -12,7 +12,7 @@ describe Sinatra::Glorify do
     end
     expected = "<h1>a sip of glory</h1>"
     get('/')
-    assert last_response.ok?
+    assert ok?
     assert_equal expected, body
   end
 
@@ -22,7 +22,7 @@ describe Sinatra::Glorify do
     end
     expected = "<p><code>puts &quot;Hello, world!&quot;</code></p>"
     get('/')
-    assert last_response.ok?
+    assert ok?
     assert_equal expected, body
   end
 
