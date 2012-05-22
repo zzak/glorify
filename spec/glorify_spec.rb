@@ -27,6 +27,17 @@ describe Sinatra::Glorify do
   end
 
   it "should parse ruby blocks" do
-    flunk "NotImplementedError"
+    mock_app do
+      get('/') do
+        @some_code = File.open(
+          File.expand_path('../glorify/some_code.md', __FILE__),
+          "rb"
+        ).read
+        erb :ruby_blocks
+      end
+    end
+    get('/')
+    assert ok?
+    refute_empty Nokogiri::HTML(body).search("//div[@class = 'highlight']/pre")
   end
 end

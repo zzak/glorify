@@ -4,6 +4,7 @@ require 'minitest/autorun'
 require 'rack'
 
 require 'glorify'
+require 'nokogiri'
 require 'rack/test'
 require 'sinatra/base'
 require 'erb'
