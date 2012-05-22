@@ -18,4 +18,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "redcarpet", "~> 2.0"
   s.add_runtime_dependency "pygments.rb"
   s.add_runtime_dependency "nokogiri"
+
+  s.add_development_dependency "minitest"
+  s.add_development_dependency "rack-test"
+  s.add_development_dependency "rake"
 end
