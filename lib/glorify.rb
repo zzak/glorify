@@ -9,8 +9,8 @@ module Sinatra
   module Glorify
     module Helpers
       def glorify text
-        rndr = Glorify::Renderer.new
-        Redcarpet::Markdown.new(rndr, Glorify::EXTENSIONS).render(text)
+        Redcarpet::Markdown.new(Glorify::Renderer.new,
+                                Glorify::EXTENSIONS).render(text)
       end
     end
 

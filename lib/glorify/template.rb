@@ -1,3 +1,4 @@
+require 'redcarpet' unless defined? Redcarpet
 require 'tilt/template'
 
 module Sinatra
@@ -12,7 +13,8 @@ module Sinatra
       end
       
       def prepare
-        @engine = Redcarpet::Markdown.new(Glorify::Renderer.new, Glorify::EXTENSIONS)
+        @engine = Redcarpet::Markdown.new(Glorify::Renderer.new,
+                                          Glorify::EXTENSIONS)
         @output = nil
       end
 
