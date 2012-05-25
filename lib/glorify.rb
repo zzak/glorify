@@ -19,6 +19,7 @@ module Sinatra
       app.helpers Glorify::Helpers
 
       app.get '/pygments.css' do
+        content_type 'text/css'
         glorify_css
       end
     end
