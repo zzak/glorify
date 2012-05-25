@@ -2,8 +2,11 @@
 
 Sinatra helper to parse markdown with syntax highlighting like the pros
 
-Renders via redcarpet with syntax highlighting thanks to [pygments.rb](https://github.com/tmm1/pygments.rb). Able to use
-fenced code blocks like github, and includes a default pygments stylesheet.
+Renders markdown via redcarpet with syntax highlighting thanks to
+[pygments.rb](https://github.com/tmm1/pygments.rb).
+
+Able to use fenced code blocks like github, and includes a default pygments
+stylesheet.
 
 ## install
 
@@ -19,28 +22,36 @@ gem 'sinatra'
 gem 'glorify'
 ```
 
-## usage
+## using `Glorify::Template`
 
-given the following `markdown` example
+glorify comes with a tilt template for rendering markdown.
 
-    # a sip of glory
+this allows you to override the default markdown renderer and use redcarpet2
+with pygments.rb to highlight any code blocks within your view.
 
-    providing a sinatra helper, glorify lets you parse markdown with ease.
+in order to do this, you will need to prefer the template class.
 
-    you can even parse code blocks, in any language you'd like. just like you can
-    with github flavored markdown. because glorify uses much of the same technology
-    as github, you can highlight code from nearly any language, without any extra
-    dependencies.
+```ruby
+Tilt.prefer Sinatra::Glorify::Template
+```
 
-    the snippet below will render a bit of some ruby with syntax highlighting.
+then any views that render `markdown` will use Glorify::Template instead.
 
-    ```ruby
-    ['toast', 'cheese', 'wine'].each { |food| print food.capitalize }
-    ```
+```ruby
+register Sinatra::Glorify
+get '/' do
+  markdown :a_view_with_code_blocks
+end
+```
+
+## using the helper
+
+if you want to stick with your current renderer and just render some code
+blocks within your view, use the `glorify` helper method.
 
 ### classical app
 
-simply `require 'glorify'` to use with a classic style sinatra app.
+simply `require 'glorify'` to use the helper with a classic style sinatra app.
 
 ```ruby
 require 'sinatra'
@@ -84,6 +95,9 @@ this is just a simple `erb` template, but you get the idea.
   </body>
 </html>
 ```
+
+the default pygments stylesheet that comes with glorify is available at the
+`/pygments.css` route
 
 ### on heroku
 
