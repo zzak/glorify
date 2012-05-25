@@ -8,7 +8,8 @@ describe Sinatra::Glorify do
 
   it "should parse a header" do
     mock_app do
-      get('/') { erb :header }
+      Tilt.prefer Sinatra::Glorify::Template
+      get('/') { markdown :header }
     end
     expected = "<h1>a sip of glory</h1>"
     get('/')
@@ -18,7 +19,8 @@ describe Sinatra::Glorify do
 
   it "should parse code blocks" do
     mock_app do
-      get('/') { erb :blocks }
+      Tilt.prefer Sinatra::Glorify::Template
+      get('/') { markdown :blocks }
     end
     expected = "<p><code>puts &quot;Hello, world!&quot;</code></p>"
     get('/')
@@ -29,11 +31,23 @@ describe Sinatra::Glorify do
   it "should parse ruby blocks" do
     mock_app do
       get('/') do
+        Tilt.prefer Sinatra::Glorify::Template
+        markdown :ruby_blocks
+      end
+    end
+    get('/')
+    assert ok?
+    refute_empty Nokogiri::HTML(body).search("//div[@class = 'highlight']/pre")
+  end
+
+  it "should parse with a helper" do
+    mock_app do
+      get('/') do
         @some_code = File.open(
           File.expand_path('../glorify/some_code.md', __FILE__),
           "rb"
         ).read
-        erb :ruby_blocks
+        erb :with_helper
       end
     end
     get('/')
