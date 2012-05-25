@@ -3,6 +3,7 @@ require "glorify/css"
 require "glorify/extensions"
 require "glorify/version"
 require "glorify/renderer"
+require "glorify/template"
 
 module Sinatra
   module Glorify
@@ -23,5 +24,6 @@ module Sinatra
     end
   end
 
+  Tilt.register Glorify::Template, 'markdown', 'mkd', 'md'
   register Glorify
 end
