@@ -54,4 +54,13 @@ describe Sinatra::Glorify do
     assert ok?
     refute_empty Nokogiri::HTML(body).search("//div[@class = 'highlight']/pre")
   end
+
+  it "should include a valid css helper for pygments" do
+    mock_app
+    get('/pygments.css')
+    assert ok?
+
+    assert_match /text\/css/, content_type
+    assert_empty validate_css(body).errors
+  end
 end
