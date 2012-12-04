@@ -1,4 +1,4 @@
-# glorify
+# Sinatra::Glorify
 
 Sinatra helper to parse markdown with syntax highlighting like the pros
 
@@ -8,7 +8,7 @@ Renders markdown via redcarpet with syntax highlighting thanks to
 Able to use fenced code blocks like github, and includes a default pygments
 stylesheet.
 
-## install
+## Installation
 
 ```bash
 gem install glorify
@@ -22,20 +22,21 @@ gem 'sinatra'
 gem 'glorify'
 ```
 
-## using `Glorify::Template`
+## Sinatra::Glorify::Template
 
-glorify comes with a tilt template for rendering markdown.
+Sinatra::Glorify comes with a tilt template for rendering markdown.
 
-this allows you to override the default markdown renderer and use redcarpet2
-with pygments.rb to highlight any code blocks within your view.
+This allows you to override the default markdown renderer and use `redcarpet`
+with `pygments.rb` to highlight any code blocks within your view.
 
-in order to do this, you will need to prefer the template class.
+In order to do this, you will need to prefer the template class.
 
 ```ruby
 Tilt.prefer Sinatra::Glorify::Template
 ```
 
-then any views that render `markdown` will use Glorify::Template instead.
+Now, any views that render via `markdown` will use Sinatra::Glorify::Template
+instead.
 
 ```ruby
 register Sinatra::Glorify
@@ -44,14 +45,21 @@ get '/' do
 end
 ```
 
-## using the helper
+## Sinatra::Glorify::Helpers
 
-if you want to stick with your current renderer and just render some code
-blocks within your view, use the `glorify` helper method.
+If you want to stick with your current renderer and just render some code
+blocks within your view, use the Sinatra::Glorify::Helpers.glorify helper
+method.
 
-### classical app
+Depending on the type of application you're building with Sinatra, the manner
+in which Sinatra::Glorify is used will change.
 
-simply `require 'glorify'` to use the helper with a classic style sinatra app.
+See the Sinatra documentation on [Modular vs. Classic
+style](http://www.sinatrarb.com/intro#Modular%20vs.%20Classic%20Style)
+
+### With a classical app
+
+Simply `require 'glorify'` to use the helper with a classic style sinatra app.
 
 ```ruby
 require 'sinatra'
@@ -63,10 +71,10 @@ get '/' do
 end
 ```
 
-### modular app
+### With a modular app
 
-you'll need to `register Sinatra::Glorify` in your sub-classed app, along with
-`require 'glorify'`, to use with a modular style sinatra app.
+You will need to `register Sinatra::Glorify` in your sub-classed app, along
+with `require 'glorify'`, to use with a modular style sinatra app.
 
 ```ruby
 require 'sinatra/base'
@@ -81,9 +89,9 @@ class SubclassedApp < Sinatra::Base
 end
 ```
 
-### the view
+### The view
 
-this is just a simple `erb` template, but you get the idea.
+This is just a simple `erb` template, but you get the idea.
 
 ```erb
 <html>
@@ -96,11 +104,18 @@ this is just a simple `erb` template, but you get the idea.
 </html>
 ```
 
-the default pygments stylesheet that comes with glorify is available at the
-`/pygments.css` route
+The default pygments stylesheet that comes with glorify is available at the
+`/pygments.css` route.
 
 
-## license
+## Still stuck?
+
+The Sinatra documentation on
+[extensions](http://www.sinatrarb.com/extensions.html) does a great job of
+explaining how to use and implement extensions using the Sinatra API.
+
+
+## License
 
 ```
 Permission is hereby granted, free of charge, to any person obtaining a copy

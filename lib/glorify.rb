@@ -6,8 +6,21 @@ require "glorify/renderer"
 require "glorify/template"
 require "glorify/helpers"
 
+# Sinatra is a microframework for Ruby
+#
+# See sinatra on github for more:
+# http://github.com/sinatra/sinatra
 module Sinatra
+  # Sinatra helper to parse markdown with syntax highlighting like the pros
+  #
+  # {See the README for more info}[http://github.com/zzak/glorify#readme]
   module Glorify
+    # Sinatra extension setup to configure the application.
+    #
+    # Uses +settings.glorify_extensions+ for the Sinatra::Glorify::Renderer
+    #
+    # Also, registers the Sinatra::Glorify::Helpers and provides the pygments
+    # stylesheet route using Sinatra::Glorify::Helpers.glorify_css.
     def self.registered(app)
       app.set :glorify_extensions, Glorify::EXTENSIONS
       app.helpers Glorify::Helpers

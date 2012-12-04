@@ -1,6 +1,15 @@
 module Sinatra
   module Glorify
     module Helpers
+      # A helper route for your application to provide a pygments friendly
+      # stylesheet.
+      #
+      # Given, your Sinatra application is mounted under +/+
+      #
+      #     <link rel="stylesheet" type="text/css" href="/pygments.css" />
+      #
+      # Based off {Trevor Turk's
+      # pygments/default.css}[https://github.com/trevorturk/pygments/blob/master/default.css]
       def glorify_css
         <<-css
           .hll { background-color: #ffffcc }
