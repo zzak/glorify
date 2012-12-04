@@ -4,16 +4,10 @@ require "glorify/extensions"
 require "glorify/version"
 require "glorify/renderer"
 require "glorify/template"
+require "glorify/helpers"
 
 module Sinatra
   module Glorify
-    module Helpers
-      def glorify text
-        Redcarpet::Markdown.new(Glorify::Renderer.new,
-                                Glorify::EXTENSIONS).render(text)
-      end
-    end
-
     def self.registered(app)
       app.set :glorify_extensions, Glorify::EXTENSIONS
       app.helpers Glorify::Helpers
