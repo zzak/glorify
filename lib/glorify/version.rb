@@ -1,5 +1,6 @@
 module Sinatra
   module Glorify
-    VERSION = "0.2.1"
+    # Current version of Sinatra::Glorify
+    VERSION = "0.3.0"
   end
 end
