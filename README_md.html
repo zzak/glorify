@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>README - Sinatra::Glorify</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-Sinatra%3A%3AGlorify">Sinatra::Glorify</a>
+      <li><a href="#label-Installation">Installation</a>
+      <li><a href="#label-Sinatra%3A%3AGlorify%3A%3ATemplate">Sinatra::Glorify::Template</a>
+      <li><a href="#label-Sinatra%3A%3AGlorify%3A%3AHelpers">Sinatra::Glorify::Helpers</a>
+      <li><a href="#label-With+a+classical+app">With a classical app</a>
+      <li><a href="#label-With+a+modular+app">With a modular app</a>
+      <li><a href="#label-The+view">The view</a>
+      <li><a href="#label-Still+stuck%3F">Still stuck?</a>
+      <li><a href="#label-License">License</a>
+    </ul>
+  </nav>
+</div>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_md.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Sinatra.html">Sinatra</a>
+  
+    <li><a href="./Sinatra/Glorify.html">Sinatra::Glorify</a>
+  
+    <li><a href="./Sinatra/Glorify/Helpers.html">Sinatra::Glorify::Helpers</a>
+  
+    <li><a href="./Sinatra/Glorify/Template.html">Sinatra::Glorify::Template</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-Sinatra%3A%3AGlorify"><a href="Sinatra/Glorify.html">Sinatra::Glorify</a></h1>
+
+<p><a href="Sinatra.html">Sinatra</a> helper to parse markdown with syntax
+highlighting like the pros</p>
+
+<p>Renders markdown via redcarpet with syntax highlighting thanks to
+<a
+href="https://github.com/tmm1/pygments.rb">pygments.rb</a>.</p>
+
+<p>Able to use fenced code blocks like github, and includes a default
+pygments
+stylesheet.</p>
+
+<h2 id="label-Installation">Installation</h2>
+
+<pre>gem install glorify</pre>
+
+<p>or with bundler</p>
+
+<pre class="ruby"><span class="ruby-comment"># Gemfile</span>
+<span class="ruby-identifier">source</span> :<span class="ruby-identifier">rubygems</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">'sinatra'</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">'glorify'</span>
+</pre>
+
+<h2 id="label-Sinatra%3A%3AGlorify%3A%3ATemplate"><a href="Sinatra/Glorify/Template.html">Sinatra::Glorify::Template</a></h2>
+
+<p><a href="Sinatra/Glorify.html">Sinatra::Glorify</a> comes with a tilt
+template for rendering markdown.</p>
+
+<p>This allows you to override the default markdown renderer and use
+<code>redcarpet</code>
+with <code>pygments.rb</code> to highlight any code
+blocks within your view.</p>
+
+<p>In order to do this, you will need to prefer the template class.</p>
+
+<pre class="ruby"><span class="ruby-constant">Tilt</span>.<span class="ruby-identifier">prefer</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Glorify</span><span class="ruby-operator">::</span><span class="ruby-constant">Template</span>
+</pre>
+
+<p>Now, any views that render via <code>markdown</code> will use <a
+href="Sinatra/Glorify/Template.html">Sinatra::Glorify::Template</a>
+instead.</p>
+
+<pre class="ruby"><span class="ruby-identifier">register</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Glorify</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">markdown</span> :<span class="ruby-identifier">a_view_with_code_blocks</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h2 id="label-Sinatra%3A%3AGlorify%3A%3AHelpers"><a href="Sinatra/Glorify/Helpers.html">Sinatra::Glorify::Helpers</a></h2>
+
+<p>If you want to stick with your current renderer and just render some
+code
+blocks within your view, use the <a
+href="Sinatra/Glorify/Helpers.html#method-i-glorify">Sinatra::Glorify::Helpers#glorify</a>
+helper
+method.</p>
+
+<p>Depending on the type of application you’re building with <a
+href="Sinatra.html">Sinatra</a>, the manner
+in which <a
+href="Sinatra/Glorify.html">Sinatra::Glorify</a> is used will change.</p>
+
+<p>See the <a href="Sinatra.html">Sinatra</a> documentation on <a
+href="http://www.sinatrarb.com/intro#Modular%20vs.%20Classic%20Style">Modular
+vs. Classic style</a></p>
+
+<h3 id="label-With+a+classical+app">With a classical app</h3>
+
+<p>Simply <code>require 'glorify'</code> to use the helper with a classic
+style sinatra app.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
+  <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-With+a+modular+app">With a modular app</h3>
+
+<p>You will need to <code>register Sinatra::Glorify</code> in your sub-classed
+app, along
+with <code>require 'glorify'</code>, to use with a modular style
+sinatra app.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra/base'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">SubclassedApp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">register</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Glorify</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
+    <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-The+view">The view</h3>
+
+<p>This is just a simple <code>erb</code> template, but you get the idea.</p>
+
+<pre>&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/pygments.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;%= glorify @example %&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<p>The default pygments stylesheet that comes with glorify is available at
+the
+<code>/pygments.css</code> route.</p>
+
+<h2 id="label-Still+stuck%3F">Still stuck?</h2>
+
+<p>The <a href="Sinatra.html">Sinatra</a> documentation on
+<a
+href="http://www.sinatrarb.com/extensions.html">extensions</a> does a great
+job of
+explaining how to use and implement extensions using the <a
+href="Sinatra.html">Sinatra</a> API.</p>
+
+<h2 id="label-License">License</h2>
+
+<pre>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the 'Software'), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.preview2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

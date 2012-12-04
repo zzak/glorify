@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module Sinatra::Glorify::Helpers - Sinatra::Glorify</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-With+a+classical+app">With a classical app</a>
+      <li><a href="#label-With+a+modular+app">With a modular app</a>
+      <li><a href="#label-The+view">The view</a>
+    </ul>
+  </nav>
+</div>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/glorify/css.rb
+    <li>lib/glorify/helpers.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-glorify">#glorify</a>
+    
+    <li ><a href="#method-i-glorify_css">#glorify_css</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../README_md.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Sinatra.html">Sinatra</a>
+  
+    <li><a href="../../Sinatra/Glorify.html">Sinatra::Glorify</a>
+  
+    <li><a href="../../Sinatra/Glorify/Helpers.html">Sinatra::Glorify::Helpers</a>
+  
+    <li><a href="../../Sinatra/Glorify/Template.html">Sinatra::Glorify::Template</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Sinatra::Glorify::Helpers</h1>
+
+  <div id="description" class="description">
+    
+<p>If you want to stick with your current renderer and just render some code
+blocks within your view, use the <a
+href="Helpers.html#method-i-glorify">#glorify</a> helper method.</p>
+
+<p>Depending on the type of application you’re building with <a
+href="../../Sinatra.html">Sinatra</a>, the manner in which <a
+href="../Glorify.html">Sinatra::Glorify</a> is used will change.</p>
+
+<p>See the <a href="../../Sinatra.html">Sinatra</a> documentation on <a
+href="http://www.sinatrarb.com/intro#Modular%20vs.%20Classic%20Style">Modular
+vs. Classic style</a></p>
+
+<h3 id="label-With+a+classical+app">With a classical app</h3>
+
+<p>Simply <code>require 'glorify'</code> to use the helper with a classic
+style sinatra app.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
+  <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-With+a+modular+app">With a modular app</h3>
+
+<p>You will need to <code>register Sinatra::Glorify</code> in your sub-classed
+app, along with <code>require 'glorify'</code>, to use with a modular style
+sinatra app.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra/base'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">SubclassedApp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">register</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Glorify</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
+    <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-The+view">The view</h3>
+
+<p>This is just a simple <code>erb</code> template, but you get the idea.</p>
+
+<pre>&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/pygments.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;%= glorify @example %&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<p>The default pygments stylesheet that comes with glorify is available at the
+<code>/pygments.css</code> route.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-glorify" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">glorify</span><span
+            class="method-args">(text)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Convenience method for custom markdown and templates.</p>
+
+<p>For modular applications you must add <code>register
+Sinatra::Helpers</code> to your application.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="glorify-source">
+            <pre><span class="ruby-comment"># File lib/glorify/helpers.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">glorify</span> <span class="ruby-identifier">text</span>
+  <span class="ruby-constant">Redcarpet</span><span class="ruby-operator">::</span><span class="ruby-constant">Markdown</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Glorify</span><span class="ruby-operator">::</span><span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">new</span>,
+                          <span class="ruby-constant">Glorify</span><span class="ruby-operator">::</span><span class="ruby-constant">EXTENSIONS</span>).<span class="ruby-identifier">render</span>(<span class="ruby-identifier">text</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- glorify-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- glorify-method -->
+
+    
+      <div id="method-i-glorify_css" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">glorify_css</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A helper route for your application to provide a pygments friendly
+stylesheet.</p>
+
+<p>Given, your <a href="../../Sinatra.html">Sinatra</a> application is mounted
+under <code>/</code></p>
+
+<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/pygments.css&quot; /&gt;</pre>
+
+<p>Based off <a
+href="https://github.com/trevorturk/pygments/blob/master/default.css">Trevor
+Turk’s pygments/default.css</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="glorify_css-source">
+            <pre><span class="ruby-comment"># File lib/glorify/css.rb, line 13</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">glorify_css</span>
+        <span class="ruby-string">&quot;          .hll { background-color: #ffffcc }
+          .c { color: #888888 } /* Comment */
+          .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+          .k { color: #008800; font-weight: bold } /* Keyword */
+          .cm { color: #888888 } /* Comment.Multiline */
+          .cp { color: #cc0000; font-weight: bold } /* Comment.Preproc */
+          .c1 { color: #888888 } /* Comment.Single */
+          .cs { color: #cc0000; font-weight: bold; background-color: #fff0f0 } /* Comment.Special */
+          .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+          .ge { font-style: italic } /* Generic.Emph */
+          .gr { color: #aa0000 } /* Generic.Error */
+          .gh { color: #303030 } /* Generic.Heading */
+          .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+          .go { color: #888888 } /* Generic.Output */
+          .gp { color: #555555 } /* Generic.Prompt */
+          .gs { font-weight: bold } /* Generic.Strong */
+          .gu { color: #606060 } /* Generic.Subheading */
+          .gt { color: #aa0000 } /* Generic.Traceback */
+          .kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+          .kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+          .kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+          .kp { color: #008800 } /* Keyword.Pseudo */
+          .kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+          .kt { color: #888888; font-weight: bold } /* Keyword.Type */
+          .m { color: #0000DD; font-weight: bold } /* Literal.Number */
+          .s { color: #dd2200; background-color: #fff0f0 } /* Literal.String */
+          .na { color: #336699 } /* Name.Attribute */
+          .nb { color: #003388 } /* Name.Builtin */
+          .nc { color: #bb0066; font-weight: bold } /* Name.Class */
+          .no { color: #003366; font-weight: bold } /* Name.Constant */
+          .nd { color: #555555 } /* Name.Decorator */
+          .ne { color: #bb0066; font-weight: bold } /* Name.Exception */
+          .nf { color: #0066bb; font-weight: bold } /* Name.Function */
+          .nl { color: #336699; font-style: italic } /* Name.Label */
+          .nn { color: #bb0066; font-weight: bold } /* Name.Namespace */
+          .py { color: #336699; font-weight: bold } /* Name.Property */
+          .nt { color: #bb0066; font-weight: bold } /* Name.Tag */
+          .nv { color: #336699 } /* Name.Variable */
+          .ow { color: #008800 } /* Operator.Word */
+          .w { color: #bbbbbb } /* Text.Whitespace */
+          .mf { color: #0000DD; font-weight: bold } /* Literal.Number.Float */
+          .mh { color: #0000DD; font-weight: bold } /* Literal.Number.Hex */
+          .mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+          .mo { color: #0000DD; font-weight: bold } /* Literal.Number.Oct */
+          .sb { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Backtick */
+          .sc { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Char */
+          .sd { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Doc */
+          .s2 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Double */
+          .se { color: #0044dd; background-color: #fff0f0 } /* Literal.String.Escape */
+          .sh { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Heredoc */
+          .si { color: #3333bb; background-color: #fff0f0 } /* Literal.String.Interpol */
+          .sx { color: #22bb22; background-color: #f0fff0 } /* Literal.String.Other */
+          .sr { color: #008800; background-color: #fff0ff } /* Literal.String.Regex */
+          .s1 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Single */
+          .ss { color: #aa6600; background-color: #fff0f0 } /* Literal.String.Symbol */
+          .bp { color: #003388 } /* Name.Builtin.Pseudo */
+          .vc { color: #336699 } /* Name.Variable.Class */
+          .vg { color: #dd7700 } /* Name.Variable.Global */
+          .vi { color: #3333bb } /* Name.Variable.Instance */
+          .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+&quot;</span>
+      <span class="ruby-keyword">end</span></pre>
+          </div><!-- glorify_css-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- glorify_css-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.preview2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

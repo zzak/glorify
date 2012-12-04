@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module Sinatra::Glorify - Sinatra::Glorify</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/glorify.rb
+    <li>lib/glorify/css.rb
+    <li>lib/glorify/extensions.rb
+    <li>lib/glorify/helpers.rb
+    <li>lib/glorify/renderer.rb
+    <li>lib/glorify/template.rb
+    <li>lib/glorify/version.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-registered">::registered</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_md.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Sinatra.html">Sinatra</a>
+  
+    <li><a href="../Sinatra/Glorify.html">Sinatra::Glorify</a>
+  
+    <li><a href="../Sinatra/Glorify/Helpers.html">Sinatra::Glorify::Helpers</a>
+  
+    <li><a href="../Sinatra/Glorify/Template.html">Sinatra::Glorify::Template</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Sinatra::Glorify</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="../Sinatra.html">Sinatra</a> helper to parse markdown with syntax
+highlighting like the pros</p>
+
+<p><a href="http://github.com/zzak/glorify#readme">See the README for more
+info</a></p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="EXTENSIONS">EXTENSIONS
+        
+        <dd class="description"><p>Helper for Sinatra::Glorify::Renderer default options.</p>
+
+<p>Configure in your application through
+<code>settings.glorify_extensions</code></p>
+        
+      
+        <dt id="VERSION">VERSION
+        
+        <dd class="description"><p>Current version of <a href="Glorify.html">Sinatra::Glorify</a></p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-registered" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">registered</span><span
+            class="method-args">(app)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="../Sinatra.html">Sinatra</a> extension setup to configure the
+application.</p>
+
+<p>Uses <code>settings.glorify_extensions</code> for the
+Sinatra::Glorify::Renderer</p>
+
+<p>Also, registers the <a
+href="Glorify/Helpers.html">Sinatra::Glorify::Helpers</a> and provides the
+pygments stylesheet route using <a
+href="Glorify/Helpers.html#method-i-glorify_css">Sinatra::Glorify::Helpers#glorify_css</a>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="registered-source">
+            <pre><span class="ruby-comment"># File lib/glorify.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">registered</span>(<span class="ruby-identifier">app</span>)
+  <span class="ruby-identifier">app</span>.<span class="ruby-identifier">set</span> <span class="ruby-value">:glorify_extensions</span>, <span class="ruby-constant">Glorify</span><span class="ruby-operator">::</span><span class="ruby-constant">EXTENSIONS</span>
+  <span class="ruby-identifier">app</span>.<span class="ruby-identifier">helpers</span> <span class="ruby-constant">Glorify</span><span class="ruby-operator">::</span><span class="ruby-constant">Helpers</span>
+
+  <span class="ruby-identifier">app</span>.<span class="ruby-identifier">get</span> <span class="ruby-string">'/pygments.css'</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">content_type</span> <span class="ruby-string">'text/css'</span>
+    <span class="ruby-identifier">glorify_css</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- registered-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- registered-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.preview2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
