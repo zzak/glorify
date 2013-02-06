@@ -23,5 +23,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rack-test"
   s.add_development_dependency "rake"
   s.add_development_dependency "w3c_validators"
-  s.add_development_dependency "rdoc", "4.0.0.preview2"
+  s.add_development_dependency "rdoc", "4.0.0.rc.2"
 end
