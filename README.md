@@ -1,5 +1,7 @@
 # Sinatra::Glorify
 
+[![Build Status](https://travis-ci.org/zzak/glorify.png?branch=master)](https://travis-ci.org/zzak/glorify)
+
 Sinatra helper to parse markdown with syntax highlighting like the pros
 
 Renders markdown via redcarpet with syntax highlighting thanks to
