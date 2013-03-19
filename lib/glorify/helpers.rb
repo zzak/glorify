@@ -63,7 +63,7 @@ module Sinatra
       # Sinatra::Helpers</code> to your application.
       def glorify text
         Redcarpet::Markdown.new(Glorify::Renderer.new,
-                                Glorify::EXTENSIONS).render(text)
+                                Glorify::EXTENSIONS).render(text.force_encoding('UTF-8'))
       end
     end
   end
