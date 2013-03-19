@@ -10,6 +10,10 @@ Renders markdown via redcarpet with syntax highlighting thanks to
 Able to use fenced code blocks like github, and includes a default pygments
 stylesheet.
 
+## Requirements
+
+Ruby 1.9.2 or greater, or Rubinius in 1.9 mode.
+
 ## Installation
 
 ```bash
