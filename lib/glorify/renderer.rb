@@ -1,14 +1,11 @@
 require "redcarpet"
-require "pygments.rb"
+require "rouge"
+require "rouge/plugins/redcarpet"
 
 module Sinatra
   module Glorify
     class Renderer < Redcarpet::Render::HTML # :nodoc:
-
-      def block_code(code, lang) # :nodoc:
-        Pygments.highlight(code, :lexer => lang, :options => {:encoding => "utf-8"})
-      end
-
+      include Rouge::Plugins::Redcarpet
     end
   end
 end

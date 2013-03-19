@@ -9,14 +9,14 @@ Gem::Specification.new do |s|
   s.email       = ["zachary@zacharyscott.net"]
   s.homepage    = "http://zacharyscott.net/glorify/"
   s.summary     = %q{Sinatra helper to parse markdown with syntax highlighting like the pros}
-  s.description = %q{Renders markdown via redcarpet with syntax highlighting thanks to pygments.rb. Able to use fenced code blocks like github, and includes a default pygments stylesheet.}
+  s.description = %q{Renders markdown via redcarpet with syntax highlighting thanks to rouge. Able to use fenced code blocks like github, and includes a default pygments stylesheet.}
 
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency "sinatra"
   s.add_runtime_dependency "redcarpet", "~> 2.0"
-  s.add_runtime_dependency "pygments.rb"
+  s.add_runtime_dependency "rouge", "~> 0.3.0"
   s.add_runtime_dependency "nokogiri"
 
   s.add_development_dependency "minitest"

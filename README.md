@@ -5,7 +5,7 @@
 Sinatra helper to parse markdown with syntax highlighting like the pros
 
 Renders markdown via redcarpet with syntax highlighting thanks to
-[pygments.rb](https://github.com/tmm1/pygments.rb).
+[rouge](https://github.com/jayferd/rouge).
 
 Able to use fenced code blocks like github, and includes a default pygments
 stylesheet.
@@ -29,7 +29,7 @@ gem 'glorify'
 Sinatra::Glorify comes with a tilt template for rendering markdown.
 
 This allows you to override the default markdown renderer and use `redcarpet`
-with `pygments.rb` to highlight any code blocks within your view.
+with `rouge` to highlight any code blocks within your view.
 
 In order to do this, you will need to prefer the template class.
 
