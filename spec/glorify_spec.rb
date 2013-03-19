@@ -37,7 +37,7 @@ describe Sinatra::Glorify do
     end
     get('/')
     assert ok?
-    refute_empty Nokogiri::HTML(body).search("//div[@class = 'highlight']/pre")
+    refute_empty Nokogiri::HTML(body).search("pre.highlight")
   end
 
   it "should parse with a helper" do
@@ -52,7 +52,7 @@ describe Sinatra::Glorify do
     end
     get('/')
     assert ok?
-    refute_empty Nokogiri::HTML(body).search("//div[@class = 'highlight']/pre")
+    refute_empty Nokogiri::HTML(body).search("pre.highlight")
   end
 
   it "should include a valid css helper for pygments" do
