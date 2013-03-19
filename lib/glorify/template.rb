@@ -21,6 +21,10 @@ module Sinatra
     #       markdown :a_view_with_code_blocks
     #     end
     class Template < Tilt::Template
+      def default_encoding
+        'UTF-8'
+      end
+
       def prepare # :nodoc:
         @engine = Redcarpet::Markdown.new(Glorify::Renderer.new,
                                           Glorify::EXTENSIONS)
@@ -29,6 +33,7 @@ module Sinatra
 
       def evaluate(scope, locals, &block) # :nodoc:
         @output ||= @engine.render(data)
+        @output.force_encoding('UTF-8')
       end
     end
   end
