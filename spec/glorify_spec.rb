@@ -11,7 +11,7 @@ describe Sinatra::Glorify do
       Tilt.prefer Sinatra::Glorify::Template
       get('/') { markdown :header }
     end
-    expected = "<h1>a sip of glory</h1>"
+    expected = "<h1 id=\"label-a+sip+of+glory\">a sip of glory<span><a href=\"#label-a+sip+of+glory\">&para;</a> <a href=\"#documentation\">&uarr;</a></span></h1>"
     get('/')
     assert ok?
     assert_equal expected, body
@@ -22,7 +22,7 @@ describe Sinatra::Glorify do
       Tilt.prefer Sinatra::Glorify::Template
       get('/') { markdown :blocks }
     end
-    expected = "<p><code>puts &quot;Hello, world!&quot;</code></p>"
+    expected = "<pre class=\"highlight text\">&quot;Hello, world!&quot;</pre>"
     get('/')
     assert ok?
     assert_equal expected, body
