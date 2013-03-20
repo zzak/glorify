@@ -1,8 +1,4 @@
-begin 
-  require_relative 'spec_helper'
-rescue NameError
-  require File.expand_path('../spec_helper', __FILE__)
-end
+require_relative 'spec_helper'
 
 describe Sinatra::Glorify do
 
@@ -11,7 +7,7 @@ describe Sinatra::Glorify do
       Tilt.prefer Sinatra::Glorify::Template
       get('/') { markdown :header }
     end
-    expected = "<h1>a sip of glory</h1>"
+    expected = "<h1 id=\"label-a+sip+of+glory\">a sip of glory<span><a href=\"#label-a+sip+of+glory\">&para;</a> <a href=\"#documentation\">&uarr;</a></span></h1>"
     get('/')
     assert ok?
     assert_equal expected, body
@@ -22,7 +18,7 @@ describe Sinatra::Glorify do
       Tilt.prefer Sinatra::Glorify::Template
       get('/') { markdown :blocks }
     end
-    expected = "<p><code>puts &quot;Hello, world!&quot;</code></p>"
+    expected = "<pre class=\"highlight text\">&quot;Hello, world!&quot;</pre>"
     get('/')
     assert ok?
     assert_equal expected, body
@@ -37,7 +33,7 @@ describe Sinatra::Glorify do
     end
     get('/')
     assert ok?
-    refute_empty Nokogiri::HTML(body).search("//div[@class = 'highlight']/pre")
+    refute_empty Nokogiri::HTML(body).search("pre.highlight")
   end
 
   it "should parse with a helper" do
@@ -52,7 +48,7 @@ describe Sinatra::Glorify do
     end
     get('/')
     assert ok?
-    refute_empty Nokogiri::HTML(body).search("//div[@class = 'highlight']/pre")
+    refute_empty Nokogiri::HTML(body).search("pre.highlight")
   end
 
   it "should include a valid css helper for pygments" do

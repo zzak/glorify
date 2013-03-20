@@ -1,6 +1,5 @@
 require "sinatra/base"
 require "glorify/css"
-require "glorify/extensions"
 require "glorify/version"
 require "glorify/renderer"
 require "glorify/template"
@@ -17,12 +16,9 @@ module Sinatra
   module Glorify
     # Sinatra extension setup to configure the application.
     #
-    # Uses +settings.glorify_extensions+ for the Sinatra::Glorify::Renderer
-    #
     # Also, registers the Sinatra::Glorify::Helpers and provides the pygments
     # stylesheet route using Sinatra::Glorify::Helpers.glorify_css.
     def self.registered(app)
-      app.set :glorify_extensions, Glorify::EXTENSIONS
       app.helpers Glorify::Helpers
 
       app.get '/pygments.css' do

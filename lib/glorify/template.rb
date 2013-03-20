@@ -1,4 +1,3 @@
-require 'redcarpet' unless defined? Redcarpet
 require 'tilt/template'
 
 module Sinatra
@@ -6,8 +5,7 @@ module Sinatra
     # Sinatra::Glorify comes with a tilt template for rendering markdown.
     #
     # This allows you to override the default markdown renderer and use
-    # +redcarpet+ with +pygments.rb+ to highlight any code blocks within your
-    # view.
+    # +rdoc-rouge+ to highlight any code blocks within your view.
     #
     # In order to do this, you will need to prefer the template class.
     #
@@ -22,13 +20,12 @@ module Sinatra
     #     end
     class Template < Tilt::Template
       def prepare # :nodoc:
-        @engine = Redcarpet::Markdown.new(Glorify::Renderer.new,
-                                          Glorify::EXTENSIONS)
+        @engine = Glorify::Renderer
         @output = nil
       end
 
       def evaluate(scope, locals, &block) # :nodoc:
-        @output ||= @engine.render(data)
+        @output ||= @engine.render(data.force_encoding('UTF-8'))
       end
     end
   end
