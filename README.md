@@ -4,15 +4,16 @@
 
 Sinatra helper to parse markdown with syntax highlighting like the pros
 
-Renders markdown via redcarpet with syntax highlighting thanks to
-[rouge](https://github.com/jayferd/rouge).
+Renders markdown via [rdoc-rouge](https://github.com/zzak/rdoc-rouge), an
+[RDoc](https://github.com/rdoc/rdoc) and
+[Rouge](https://github.com/jayferd/rouge) bridge.
 
 Able to use fenced code blocks like github, and includes a default pygments
 stylesheet.
 
 ## Requirements
 
-Ruby 1.9.2 or greater, or Rubinius in 1.9 mode.
+Ruby 1.9.2 or greater, also supports JRuby and Rubinius when using 1.9 modes.
 
 ## Installation
 
@@ -32,8 +33,8 @@ gem 'glorify'
 
 Sinatra::Glorify comes with a tilt template for rendering markdown.
 
-This allows you to override the default markdown renderer and use `redcarpet`
-with `rouge` to highlight any code blocks within your view.
+This allows you to override the default markdown renderer and use `rdoc-rouge`
+to highlight any code blocks within your view.
 
 In order to do this, you will need to prefer the template class.
 

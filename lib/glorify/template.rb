@@ -5,8 +5,7 @@ module Sinatra
     # Sinatra::Glorify comes with a tilt template for rendering markdown.
     #
     # This allows you to override the default markdown renderer and use
-    # +redcarpet+ with +rouge+ to highlight any code blocks within your
-    # view.
+    # +rdoc-rouge+ to highlight any code blocks within your view.
     #
     # In order to do this, you will need to prefer the template class.
     #
