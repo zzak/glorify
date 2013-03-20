@@ -1,11 +1,7 @@
-require "redcarpet"
-require "rouge"
-require "rouge/plugins/redcarpet"
+require "rdoc/rouge"
 
 module Sinatra
   module Glorify
-    class Renderer < Redcarpet::Render::HTML # :nodoc:
-      include Rouge::Plugins::Redcarpet
-    end
+    class Renderer < RDoc::Rouge::Renderer; end # :nodoc:
   end
 end
