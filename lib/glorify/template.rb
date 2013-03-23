@@ -20,12 +20,12 @@ module Sinatra
     #     end
     class Template < Tilt::Template
       def prepare # :nodoc:
-        @engine = Glorify::Renderer
+        @engine = Glorify::Renderer.new(options)
         @output = nil
       end
 
       def evaluate(scope, locals, &block) # :nodoc:
-        @output ||= @engine.render(data.force_encoding('UTF-8'))
+        @output ||= @engine.parse(data.force_encoding('UTF-8'))
       end
     end
   end

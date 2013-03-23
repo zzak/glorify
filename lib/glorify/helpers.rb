@@ -61,8 +61,8 @@ module Sinatra
       #
       # For modular applications you must add <code>register
       # Sinatra::Helpers</code> to your application.
-      def glorify text
-        Glorify::Renderer.render(text.force_encoding('UTF-8'))
+      def glorify text, options = {}
+        Glorify::Renderer.new(options).parse(text.force_encoding('UTF-8'))
       end
     end
   end
