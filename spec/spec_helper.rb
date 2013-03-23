@@ -19,7 +19,10 @@ class MiniTest::Spec
   include W3CValidators
 
   def mock_app(base=Sinatra::Base, &block)
-    @app = Sinatra.new(base, &block)
+    @app = Sinatra.new(base) do
+      Tilt.prefer Sinatra::Glorify::Template
+      class_eval &block if block_given?
+    end
   end
 
   def app
