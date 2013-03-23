@@ -127,7 +127,7 @@
 blocks within your view, use the <a
 href="Helpers.html#method-i-glorify">#glorify</a> helper method.</p>
 
-<p>Depending on the type of application you’re building with <a
+<p>Depending on the type of application you&#39;re building with <a
 href="../../Sinatra.html">Sinatra</a>, the manner in which <a
 href="../Glorify.html">Sinatra::Glorify</a> is used will change.</p>
 
@@ -137,13 +137,13 @@ vs. Classic style</a></p>
 
 <h3 id="label-With+a+classical+app">With a classical app<span><a href="#label-With+a+classical+app">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<p>Simply <code>require 'glorify'</code> to use the helper with a classic
-style sinatra app.</p>
+<p>Simply <code>require &#39;glorify&#39;</code> to use the helper with a
+classic style sinatra app.</p>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
-<span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;sinatra&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;glorify&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;erb&#39;</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">&#39;/&#39;</span> <span class="ruby-keyword">do</span>
   <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
   <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
 <span class="ruby-keyword">end</span>
@@ -152,15 +152,15 @@ style sinatra app.</p>
 <h3 id="label-With+a+modular+app">With a modular app<span><a href="#label-With+a+modular+app">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>You will need to <code>register Sinatra::Glorify</code> in your sub-classed
-app, along with <code>require 'glorify'</code>, to use with a modular style
-sinatra app.</p>
+app, along with <code>require &#39;glorify&#39;</code>, to use with a
+modular style sinatra app.</p>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra/base'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;sinatra/base&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;glorify&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;erb&#39;</span>
 <span class="ruby-keyword">class</span> <span class="ruby-constant">SubclassedApp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
   <span class="ruby-identifier">register</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Glorify</span>
-  <span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-string">&#39;/&#39;</span> <span class="ruby-keyword">do</span>
     <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
     <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
   <span class="ruby-keyword">end</span>
@@ -227,7 +227,7 @@ Sinatra::Helpers</code> to your application.</p>
           <div class="method-source-code" id="glorify-source">
             <pre><span class="ruby-comment"># File lib/glorify/helpers.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">glorify</span> <span class="ruby-identifier">text</span>
-  <span class="ruby-constant">Glorify</span><span class="ruby-operator">::</span><span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">'UTF-8'</span>))
+  <span class="ruby-constant">Glorify</span><span class="ruby-operator">::</span><span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">text</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&#39;UTF-8&#39;</span>))
 <span class="ruby-keyword">end</span></pre>
           </div><!-- glorify-source -->
           

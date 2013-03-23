@@ -127,8 +127,8 @@ modes.</p>
 
 <pre class="ruby"><span class="ruby-comment"># Gemfile</span>
 <span class="ruby-identifier">source</span> :<span class="ruby-identifier">rubygems</span>
-<span class="ruby-identifier">gem</span> <span class="ruby-string">'sinatra'</span>
-<span class="ruby-identifier">gem</span> <span class="ruby-string">'glorify'</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;sinatra&#39;</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;glorify&#39;</span>
 </pre>
 
 <h2 id="label-Sinatra%3A%3AGlorify%3A%3ATemplate"><a href="Sinatra/Glorify/Template.html">Sinatra::Glorify::Template</a><span><a href="#label-Sinatra%3A%3AGlorify%3A%3ATemplate">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
@@ -150,7 +150,7 @@ href="Sinatra/Glorify/Template.html">Sinatra::Glorify::Template</a>
 instead.</p>
 
 <pre class="ruby"><span class="ruby-identifier">register</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Glorify</span>
-<span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">&#39;/&#39;</span> <span class="ruby-keyword">do</span>
   <span class="ruby-identifier">markdown</span> :<span class="ruby-identifier">a_view_with_code_blocks</span>
 <span class="ruby-keyword">end</span>
 </pre>
@@ -164,7 +164,7 @@ href="Sinatra/Glorify/Helpers.html#method-i-glorify">Sinatra::Glorify::Helpers#g
 helper
 method.</p>
 
-<p>Depending on the type of application you’re building with <a
+<p>Depending on the type of application you&#39;re building with <a
 href="Sinatra.html">Sinatra</a>, the manner
 in which <a
 href="Sinatra/Glorify.html">Sinatra::Glorify</a> is used will change.</p>
@@ -175,13 +175,13 @@ vs. Classic style</a></p>
 
 <h3 id="label-With+a+classical+app">With a classical app<span><a href="#label-With+a+classical+app">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<p>Simply <code>require 'glorify'</code> to use the helper with a classic
-style sinatra app.</p>
+<p>Simply <code>require &#39;glorify&#39;</code> to use the helper with a
+classic style sinatra app.</p>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
-<span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;sinatra&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;glorify&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;erb&#39;</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">&#39;/&#39;</span> <span class="ruby-keyword">do</span>
   <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
   <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
 <span class="ruby-keyword">end</span>
@@ -191,15 +191,15 @@ style sinatra app.</p>
 
 <p>You will need to <code>register Sinatra::Glorify</code> in your sub-classed
 app, along
-with <code>require 'glorify'</code>, to use with a modular style
-sinatra app.</p>
+with <code>require &#39;glorify&#39;</code>, to use with a
+modular style sinatra app.</p>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'sinatra/base'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'glorify'</span>
-<span class="ruby-identifier">require</span> <span class="ruby-string">'erb'</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;sinatra/base&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;glorify&#39;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&#39;erb&#39;</span>
 <span class="ruby-keyword">class</span> <span class="ruby-constant">SubclassedApp</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
   <span class="ruby-identifier">register</span> <span class="ruby-constant">Sinatra</span><span class="ruby-operator">::</span><span class="ruby-constant">Glorify</span>
-  <span class="ruby-identifier">get</span> <span class="ruby-string">'/'</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">get</span> <span class="ruby-string">&#39;/&#39;</span> <span class="ruby-keyword">do</span>
     <span class="ruby-ivar">@example</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/example.md&quot;</span>, <span class="ruby-string">&quot;rb&quot;</span>).<span class="ruby-identifier">read</span>
     <span class="ruby-identifier">erb</span> :<span class="ruby-identifier">index</span>
   <span class="ruby-keyword">end</span>
@@ -235,7 +235,7 @@ href="Sinatra.html">Sinatra</a> API.</p>
 <h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <pre>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the 'Software'), to deal
+of this software and associated documentation files (the &#39;Software&#39;), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
@@ -244,7 +244,7 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
