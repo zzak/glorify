@@ -10,6 +10,15 @@ rvm:
 matrix:
   allow_failures:
     - rvm: rbx-19mode
+  include:
+    - { rvm: 1.9.3, env: sinatra=master }
+    - { rvm: 1.9.3, env: rdoc-rouge=master }
+    - { rvm: 2.0.0, env: sinatra=master }
+    - { rvm: 2.0.0, env: rdoc-rouge=master }
+    - { rvm: ruby-head, env: sinatra=master }
+    - { rvm: ruby-head, env: rdoc-rouge=master }
+    - { rvm: jruby-head, env: sinatra=master }
+    - { rvm: jruby-head, env: rdoc-rouge=master }
 notifications:
   recipients:
     - zachary@zacharyscott.net
