@@ -3,22 +3,24 @@ rvm:
   - 1.9.2
   - 1.9.3
   - 2.0.0
+  - 2.1.0
   - ruby-head
-  - jruby-19mode
-  - jruby-head
-  - rbx-19mode
+  - jruby
+  - rbx
 matrix:
   allow_failures:
-    - rvm: rbx-19mode
+    - rvm: rbx
   include:
     - { rvm: 1.9.3, env: sinatra=master }
     - { rvm: 1.9.3, env: rdoc-rouge=master }
     - { rvm: 2.0.0, env: sinatra=master }
     - { rvm: 2.0.0, env: rdoc-rouge=master }
+    - { rvm: 2.1.0, env: sinatra=master }
+    - { rvm: 2.1.0, env: rdoc-rouge=master }
     - { rvm: ruby-head, env: sinatra=master }
     - { rvm: ruby-head, env: rdoc-rouge=master }
-    - { rvm: jruby-head, env: sinatra=master }
-    - { rvm: jruby-head, env: rdoc-rouge=master }
+    - { rvm: jruby, env: sinatra=master }
+    - { rvm: jruby, env: rdoc-rouge=master }
 notifications:
   recipients:
     - zachary@zacharyscott.net
