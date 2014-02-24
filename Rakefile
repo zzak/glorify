@@ -15,5 +15,14 @@ RDoc::Task.new do |rdoc|
   rdoc.options << "-O"
 end
 
+desc "clean up existing rdoc files"
+task :clean do
+  sh "rm *.html"
+  sh "rm rdoc.css"
+  sh "rm created.rid"
+  sh "rm -rf images/"
+  sh "rm -rf js/"
+end
+
 task(:spec => :test)
 task(:default => :test)
